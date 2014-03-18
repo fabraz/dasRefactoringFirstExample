@@ -26,7 +26,11 @@ class Customer {
 			double thisAmount = 0;
 			Rental each = (Rental) rentals.nextElement();
 
-			thisAmount = amount(each);
+			
+			//thisAmount = amount(each);
+			//Update references to the moved method
+			thisAmount = each.getCharge();
+			
 
 			// add frequent renter points
 			frequentRenterPoints++;
