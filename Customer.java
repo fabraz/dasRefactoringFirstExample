@@ -27,10 +27,7 @@ class Customer {
 			Rental each = (Rental) rentals.nextElement();
 
 			
-			//thisAmount = amount(each);
-			//Update references to the moved method
-			thisAmount = each.getCharge();
-			
+			thisAmount = each.getCharge();	
 
 			// add frequent renter points
 			frequentRenterPoints++;
@@ -57,11 +54,4 @@ class Customer {
 		return result;
 	}
 	
-	//Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
-	//Method moved to Rental, since every operation happens on that object and not on Customer
-	private double amount(Rental aRental) {
-		
-		return aRental.getCharge();
-	
-	}
 }
