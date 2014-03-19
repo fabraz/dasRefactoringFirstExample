@@ -1,52 +1,58 @@
-class Rental {
-	private Movie _movie;
-	private int _daysRented;
+public class Movie {
 
-	public Rental(Movie movie, int daysRented) {
-		_movie = movie;
-		_daysRented = daysRented;
+	public static final int CHILDRENS = 2;
+	public static final int REGULAR = 0;
+	public static final int NEW_RELEASE = 1;
+	private String _title;
+	int _priceCode;
+
+	public Movie(String title, int priceCode) {
+		_title = title;
+		_priceCode = priceCode;
 	}
 
-	public int getDaysRented() {
-		return _daysRented;
+	public int getPriceCode() {
+		return _priceCode;
 	}
 
-	public Movie getMovie() {
-		return _movie;
+	public void setPriceCode(int arg) {
+		_priceCode = arg;
 	}
 
-	public double getCharge() {
+	public String getTitle() {
+		return _title;
+	}
+
+	public double getCharge(int daysRented) {
 		double result = 0;
 		// determine amounts for each line
-		switch (getMovie().getPriceCode()) {
+		switch (getPriceCode()) {
 
 		case Movie.REGULAR:
 			result += 2;
-			if (getDaysRented() > 2)
-				result += (getDaysRented() - 2) * 1.5;
+			if (daysRented > 2)
+				result += (daysRented - 2) * 1.5;
 			break;
 		case Movie.NEW_RELEASE:
-			result += getDaysRented() * 3;
+			result += daysRented * 3;
 			break;
 		case Movie.CHILDRENS:
 			result += 1.5;
 
-			if (getDaysRented() > 3)
-				result += (getDaysRented() - 3) * 1.5;
+			if (daysRented > 3)
+				result += (daysRented - 3) * 1.5;
 			break;
 
 		}
 		return result;
 	}
 
-	public int getFrequentRenterPoints() {
-
-		if ((getMovie().getPriceCode() == Movie.NEW_RELEASE)
-				&& getDaysRented() > 1)
+	public int getFrequentRenterPoints(int _daysRented) {
+		if ((getPriceCode() == Movie.NEW_RELEASE)
+				&& _daysRented > 1)
 			return 2;
 		else
 
 			return 1;
 	}
-
 }
